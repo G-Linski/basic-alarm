@@ -29,6 +29,8 @@ body {
 .content {
   width: 300px;
   justify-content: center;
+  margin-top: 20px;
+
 }
 
 .clock-box {
