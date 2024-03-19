@@ -16,8 +16,9 @@ let alarmSet = false;
 let wakeHour = -1;
 let wakeMinute = -1;
 let delay = false;
+let bg = false;
 
-//Clock Display Functions
+//Formatting Numbers
 function formatTime(hours, minutes){
   let h = hours.toString();
   let m = minutes.toString();
@@ -31,6 +32,7 @@ function formatTime(hours, minutes){
   return h, m;
 }
 
+//Reset Alarm Display and Variables
 function resetAlarm(){
   alarmSet = false;
   bell.style.visibility = "hidden";
@@ -43,9 +45,21 @@ function p(x){
   return parseInt(x);
 }
 
-//Delay if Same Time
+//Delay Reset
 function delayReset(){
   delay = false;
+}
+
+//Flash
+function flashClock(){
+    if(bg === false){
+      body.style.backgroundColor = '#000000';
+      bg = true;
+    }
+    else{
+      body.style.backgroundColor = '#f8f8f8'
+      bg = false;
+    }
 }
 
 //Display on Clock and Alarm
@@ -59,9 +73,14 @@ function displayTime() {
   console.log(delay);
   if(sameTime(hours,wakeHour,minutes,wakeMinute) && alarmSet && !delay){
     alarmSound.play();
+    
+    for (let i = 0; i < 10 ; i++){
+      setInterval(flashClock, 300);
+    }
+    body.style.backgroundColor = '#f8f8f8'
+
     setTimeout(resetAlarm, 8000);
     delayReset();
-
   }
 }
 
@@ -78,8 +97,7 @@ function sameTime(h1,h2,m1,m2){
 
 
 
-
-//Alarm Functions
+//Validate Input of Hours and Minutes
 function validateTime(hours,minutes){
   let check1 = false;
   let check2 = false;
@@ -92,12 +110,10 @@ function validateTime(hours,minutes){
   if (m >= 0 && m <= 60){
     check2 = true;
   }
-  // console.log(check1, check2);
-  // console.log(h, m);
-  // console.log(23 >= 0 && 23 <= 23);
   return (check1 && check2);
 }
 
+//Alarm Button Set
 alarmButton.addEventListener('click',function(){
   wakeHour = hoursInput.value;
   wakeMinute = minutesInput.value;
@@ -116,40 +132,17 @@ alarmButton.addEventListener('click',function(){
       setTimeout(delayReset, 60000);
     }
     
-
-
-
   }
-
   else {
     hoursInput.value = '';
     minutesInput.value = '';
   }
   
-  
 });
-
 
 
 
 window.addEventListener('onload', displayTime());
 setInterval(displayTime, 1000);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

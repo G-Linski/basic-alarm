@@ -15,12 +15,9 @@
 body {
   background-color: #f8f8f8;
   font-family: "Montserrat", sans-serif;
-  /* font-family: "Open Sans", sans-serif,'Arial','Helvetica'; */
   display: flex;
   justify-content: center;
-
 }
-
 
 /*------------------------------------------*/
 /*              Display                     */
@@ -30,7 +27,6 @@ body {
   width: 300px;
   justify-content: center;
   margin-top: 20px;
-
 }
 
 .clock-box {
@@ -45,7 +41,6 @@ body {
   h2 {
     font-size: 50px;
   }
-
 }
 
 .alarm-box {
@@ -75,13 +70,11 @@ body {
   visibility: hidden;
 }
 
-
 .input-box {
   display:flex;
   width:var(--circle-size);
   gap: 30px;
 }
-
 
 button, input[type=text] {
   width: 80px;
@@ -95,15 +88,9 @@ button, input[type=text] {
   text-align: center;
 }
 
-
-
-
-
-
 /*------------------------------------------*/
 /*              Utility                     */
 /*------------------------------------------*/
-
 
 .space-around {
   justify-content: space-around;
@@ -124,5 +111,3 @@ button, input[type=text] {
 .center {
   align-content: center;
 }
-
-
